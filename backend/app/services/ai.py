@@ -73,7 +73,7 @@ def _shape_output(prompt: str, params: ModelParameters, audience: Optional[str])
     return f"{preface}\n\nSuggested listing text: {' '.join(prompt.split()[:params.max_tokens])}"
 
 
-def generate(payload: GenerationRequest) -> GenerationResponse:
+async def generate(payload: GenerationRequest) -> GenerationResponse:
     model = _MODEL_REGISTRY.get(payload.model)
     if not model:
         raise ValueError(f"Unknown model '{payload.model}'. Available: {', '.join(_MODEL_REGISTRY)}")
