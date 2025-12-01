@@ -61,7 +61,7 @@ def _apply_context(prompt: str, context: List[str]) -> str:
     return stitched
 
 
-def _shape_output(prompt: str, params: ModelParameters, audience: str | None) -> str:
+def _shape_output(prompt: str, params: ModelParameters, audience: Optional[str]) -> str:
     safety = "Responses are trimmed by stop sequences." if params.stop else "No explicit stop sequences applied."
     tone = f"Tailored for {audience}." if audience else "General-purpose tone."
     preface = dedent(
