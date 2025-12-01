@@ -49,7 +49,7 @@ def _merge_parameters(model: AIModel, overrides: Optional[ModelParameters]) -> M
 
 
 def _extract_keywords(prompt: str, limit: int = 6) -> List[str]:
-    words = [w.strip(".,!?:;""'\"\n").lower() for w in prompt.split()]
+    words = [w.strip('.,!?:;"\'\\n').lower() for w in prompt.split()]
     filtered = [w for w in words if len(w) > 4]
     return [w for w, _ in Counter(filtered).most_common(limit)]
 
