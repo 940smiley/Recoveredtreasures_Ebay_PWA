@@ -14,6 +14,6 @@ async def available_models():
 @router.post("/ai/generate")
 async def generate_text(payload: GenerationRequest):
     try:
-        return ai.generate(payload)
+        return await ai.generate(payload)
     except ValueError as exc:
         raise HTTPException(status_code=400, detail=str(exc)) from exc
