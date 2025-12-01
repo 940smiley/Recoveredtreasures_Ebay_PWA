@@ -70,7 +70,7 @@ def _shape_output(prompt: str, params: ModelParameters, audience: Optional[str])
         Guidance: {tone} {safety}
         """
     ).strip()
-    return f"{preface}\n\nSuggested listing text: {prompt[: params.max_tokens]}"
+    return f"{preface}\n\nSuggested listing text: {' '.join(prompt.split()[:params.max_tokens])}"
 
 
 def generate(payload: GenerationRequest) -> GenerationResponse:
