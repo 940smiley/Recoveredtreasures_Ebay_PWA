@@ -19,7 +19,8 @@ class ModelParameters(BaseModel):
     json_mode: bool = Field(False, description="Enforce structured JSON output when true")
     seed: Optional[int] = Field(None, ge=0, description="Optional seed for reproducibility")
 
-    @validator("stop", pre=True)
+    @field_validator("stop", mode="before")
+    @classmethod
     def normalize_stop(cls, value: List[str]):
         return [s for s in value if s]
 
