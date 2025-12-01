@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from .routes import apps, tasks, uploads, drafts, pricing, jobs, settings
+from .routes import apps, tasks, uploads, drafts, pricing, jobs, settings, ai
 from .db.session import init_db
 from fastapi.staticfiles import StaticFiles
 import os
@@ -25,6 +25,7 @@ app.include_router(drafts.router, prefix="/api", tags=["drafts"])
 app.include_router(pricing.router, prefix="/api", tags=["pricing"])
 app.include_router(jobs.router, prefix="/api", tags=["jobs"])
 app.include_router(settings.router, prefix="/api", tags=["settings"])
+app.include_router(ai.router, prefix="/api", tags=["ai"])
 
 @app.get("/api/health")
 async def health():
