@@ -42,7 +42,7 @@ def list_models() -> List[AIModel]:
     return list(_MODEL_REGISTRY.values())
 
 
-def _merge_parameters(model: AIModel, overrides: ModelParameters | None) -> ModelParameters:
+def _merge_parameters(model: AIModel, overrides: Optional[ModelParameters]) -> ModelParameters:
     if not overrides:
         return model.default_parameters
     return model.default_parameters.model_copy(update=overrides.model_dump(exclude_unset=True))
